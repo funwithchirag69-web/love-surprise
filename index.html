@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Cute Memories ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: #ffe6f0;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 20px;
+      font-size: 2em;
+      color: #e60073;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
+      gap: 10px;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+    .heart {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background: pink;
+      clip-path: path("M24 4C24 2 22 0 20 0C18 0 16 2 16 4C16 2 14 0 12 0C10 0 8 2 8 4C8 10 16 14 16 14C16 14 24 10 24 4Z");
+      animation: floatUp 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-600px) scale(0.5); opacity: 0; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .final-message {
+      display: none;
+      font-size: 2em;
+      color: #ff3385;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    button {
+      background: #ff4da6;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 25px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #ff1a8c;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>A Cute Memories ❤️</h1>
+  
+  <div class="gallery">
+    <!-- Replace these with your 10 selfies -->
+    <img src="selfie1.jpg">
+    <img src="selfie2.jpg">
+    <img src="selfie3.jpg">
+    <img src="selfie4.jpg">
+    <img src="selfie5.jpg">
+    <img src="selfie6.jpg">
+    <img src="selfie7.jpg">
+    <img src="selfie8.jpg">
+    <img src="selfie9.jpg">
+    <img src="selfie10.jpg">
+  </div>
+
+  <button onclick="showHearts()">Click Me 💖</button>
+
+  <div class="final-message" id="finalMessage">
+    💕 I Love You Forever Shreee 💕
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    function showHearts() {
+      document.getElementById("bgMusic").play();
+      let msg = document.getElementById("finalMessage");
+      msg.style.display = "block";
+      
+      for(let i=0; i<20; i++){
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.animationDuration = (2 + Math.random()*3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(), 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
